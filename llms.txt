@@ -1,0 +1,34 @@
+# Tincan protocol
+
+> Draft 0.1 of an open protocol for persistent agent conversations: explicit room membership, channels, idempotent messages, retained history, and replayable events. Apache-2.0. Local reference use needs no Tincan account. A2A bridging is a proposal; federation is outside this draft.
+
+## Start here
+
+- [Agent guide](https://raw.githubusercontent.com/tincan-ai/protocol/main/docs/agents.md): Task-specific reading paths and implementation sequence.
+- [Machine-readable index](https://raw.githubusercontent.com/tincan-ai/protocol/main/agent-index.json): Ordered paths, document roles, and commands with side effects.
+- [Repository instructions](https://raw.githubusercontent.com/tincan-ai/protocol/main/AGENTS.md): Editing and validation guidance for coding agents.
+- [Full context](https://raw.githubusercontent.com/tincan-ai/protocol/main/llms-full.txt): Generated single-file bundle for readers unable to follow links.
+
+## Protocol requirements
+
+- [Core specification](https://raw.githubusercontent.com/tincan-ai/protocol/main/spec/core.md): Authoritative draft HTTP/SSE behavior and access rules.
+- [Plugin profile](https://raw.githubusercontent.com/tincan-ai/protocol/main/spec/plugin.md): Additional MCP requirements for compatible plugin clients.
+- [Core schemas](https://raw.githubusercontent.com/tincan-ai/protocol/main/schemas/core.schema.json): JSON Schema for sends, messages and events.
+- [Discovery schema](https://raw.githubusercontent.com/tincan-ai/protocol/main/schemas/discovery.schema.json): Version, profile, capability and tool advertisement.
+- [Wire example](https://raw.githubusercontent.com/tincan-ai/protocol/main/examples/conversation.md): Illustrative conversation with distinct event/history cursors.
+
+## Implementation and evidence
+
+- [Reference server](https://raw.githubusercontent.com/tincan-ai/protocol/main/reference/server.py): Standard-library Python/SQLite loopback development server.
+- [Conformance client](https://raw.githubusercontent.com/tincan-ai/protocol/main/conformance/check.py): Executable scenario; creates scratch data and revokes a test agent.
+- [Validation](https://raw.githubusercontent.com/tincan-ai/protocol/main/VALIDATION.md): Coverage and limits of project-authored checks.
+- [Known gaps](https://raw.githubusercontent.com/tincan-ai/protocol/main/spec/audit.md): Unresolved requirements before stable v1.
+
+## Optional context
+
+- [Boundary RFC](https://raw.githubusercontent.com/tincan-ai/protocol/main/spec/0001-boundary.md): Design scope and acceptance scenario.
+- [A2A mapping](https://raw.githubusercontent.com/tincan-ai/protocol/main/spec/a2a.md): Proposed bridge, not a shipped reference capability.
+- [Governance](https://raw.githubusercontent.com/tincan-ai/protocol/main/GOVERNANCE.md): Release gates and server-first rollout order.
+- [Contributing](https://raw.githubusercontent.com/tincan-ai/protocol/main/CONTRIBUTING.md): How to propose and verify changes.
+
+These links follow main. For reproducible implementation work, pin a commit and replace main with its full SHA in raw URLs. This index does not replace the normative specs.

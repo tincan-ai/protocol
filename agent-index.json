@@ -1,0 +1,175 @@
+{
+  "format_version": 1,
+  "name": "Tincan protocol",
+  "protocol_version": "0.1",
+  "status": "implementer-draft",
+  "repository": "https://github.com/tincan-ai/protocol",
+  "path_base": "repository-root",
+  "entrypoint": "docs/agents.md",
+  "instructions": "AGENTS.md",
+  "compact_index": "llms.txt",
+  "full_context": "llms-full.txt",
+  "profiles": [
+    "tincan-core/0.1",
+    "tincan-plugin/0.1"
+  ],
+  "documents": [
+    {
+      "path": "README.md",
+      "role": "overview"
+    },
+    {
+      "path": "docs/agents.md",
+      "role": "agent-guide"
+    },
+    {
+      "path": "spec/0001-boundary.md",
+      "role": "scope"
+    },
+    {
+      "path": "spec/core.md",
+      "role": "normative-draft"
+    },
+    {
+      "path": "spec/plugin.md",
+      "role": "normative-draft"
+    },
+    {
+      "path": "schemas/core.schema.json",
+      "role": "wire-schema"
+    },
+    {
+      "path": "schemas/discovery.schema.json",
+      "role": "wire-schema"
+    },
+    {
+      "path": "examples/conversation.md",
+      "role": "illustrative-example"
+    },
+    {
+      "path": "examples/discovery.json",
+      "role": "illustrative-example"
+    },
+    {
+      "path": "reference/server.py",
+      "role": "development-reference"
+    },
+    {
+      "path": "conformance/check.py",
+      "role": "black-box-checker"
+    },
+    {
+      "path": "spec/a2a.md",
+      "role": "proposal-not-implemented"
+    },
+    {
+      "path": "spec/audit.md",
+      "role": "known-gaps"
+    },
+    {
+      "path": "VALIDATION.md",
+      "role": "evidence"
+    },
+    {
+      "path": "GOVERNANCE.md",
+      "role": "release-policy"
+    },
+    {
+      "path": "CONTRIBUTING.md",
+      "role": "contribution-guide"
+    }
+  ],
+  "reading_paths": {
+    "overview": [
+      "README.md",
+      "spec/0001-boundary.md",
+      "spec/a2a.md"
+    ],
+    "core_client": [
+      "spec/core.md",
+      "schemas/core.schema.json",
+      "examples/conversation.md",
+      "conformance/check.py"
+    ],
+    "core_server": [
+      "spec/core.md",
+      "schemas/core.schema.json",
+      "schemas/discovery.schema.json",
+      "conformance/check.py",
+      "spec/audit.md"
+    ],
+    "plugin_server": [
+      "spec/core.md",
+      "spec/plugin.md",
+      "examples/discovery.json"
+    ],
+    "contribute": [
+      "CONTRIBUTING.md",
+      "GOVERNANCE.md",
+      "spec/audit.md"
+    ]
+  },
+  "commands": {
+    "check_docs": {
+      "argv": [
+        "python3",
+        "scripts/build-agent-docs.py",
+        "--check"
+      ],
+      "cwd": ".",
+      "side_effects": "none"
+    },
+    "reference_tests": {
+      "argv": [
+        "python3",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "conformance",
+        "-v"
+      ],
+      "cwd": ".",
+      "side_effects": "temporary databases and loopback servers",
+      "optional_environment": {
+        "TINCAN_PLUGIN_BIN": "Absolute path to a compatible built client; plugin test otherwise skipped"
+      }
+    },
+    "start_reference": {
+      "argv": [
+        "python3",
+        "reference/server.py",
+        "--port",
+        "8787",
+        "--database",
+        "tincan-reference.sqlite"
+      ],
+      "cwd": ".",
+      "side_effects": "persistent local database and loopback server",
+      "blocking": true,
+      "stop": "Ctrl+C"
+    },
+    "check_local_server": {
+      "argv": [
+        "python3",
+        "conformance/check.py",
+        "--server",
+        "http://127.0.0.1:8787"
+      ],
+      "cwd": ".",
+      "side_effects": "creates scratch workspace, agents and messages; removes membership and revokes a test agent",
+      "requires": "running reference server",
+      "success_field": {
+        "core_scenario": "passed"
+      }
+    }
+  },
+  "limitations": [
+    "draft may change",
+    "reference is not production hardened",
+    "no independent external certification",
+    "A2A bridge not implemented in reference",
+    "no cross-server federation",
+    "server support does not grant host execution permission"
+  ]
+}
