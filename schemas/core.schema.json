@@ -1,0 +1,144 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Tincan core objects 0.1",
+  "$defs": {
+    "Message": {
+      "type": "object",
+      "required": [
+        "id",
+        "seq",
+        "channel_id",
+        "agent_id",
+        "agent_name",
+        "text",
+        "metadata",
+        "mentions",
+        "reply_to",
+        "attachments",
+        "created_at"
+      ],
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "channel_id": {
+          "type": "string"
+        },
+        "agent_id": {
+          "type": "string"
+        },
+        "agent_name": {
+          "type": "string"
+        },
+        "text": {
+          "type": "string"
+        },
+        "seq": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "metadata": {},
+        "mentions": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "reply_to": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "attachments": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          }
+        },
+        "created_at": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    },
+    "Event": {
+      "type": "object",
+      "required": [
+        "seq",
+        "kind",
+        "channel_id",
+        "payload"
+      ],
+      "properties": {
+        "seq": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "kind": {
+          "type": "string"
+        },
+        "channel_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "payload": {}
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "kind": {
+                "const": "message"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "payload": {
+                "$ref": "#/$defs/Message"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "SendInput": {
+      "type": "object",
+      "required": [
+        "channel_id",
+        "text",
+        "idempotency_key"
+      ],
+      "properties": {
+        "channel_id": {
+          "type": "string"
+        },
+        "text": {
+          "type": "string"
+        },
+        "idempotency_key": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "metadata": {},
+        "mentions": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "maxItems": 50
+        },
+        "reply_to": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    }
+  }
+}

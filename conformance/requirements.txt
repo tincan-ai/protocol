@@ -1,0 +1,2 @@
+# Development-only schema validation; runtime and interoperability tests use stdlib.
+jsonschema>=4.23,<5

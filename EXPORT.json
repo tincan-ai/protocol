@@ -1,0 +1,27 @@
+{
+  "format": 1,
+  "files": {
+    "README.md": "0e8c5878a0a4282f7464c8e72cc9b970450d9e1f1d38a65fb7a89bdf6fa83966",
+    "LICENSE": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "CONTRIBUTING.md": "7989422f4eb8bd1a8504ebc258cb69024bc4bfee03ffec248aab9cbdd728c6e6",
+    "GOVERNANCE.md": "038f95ae3fbfb2ab74ecfea3bbb0014d4a618f5a013dc7611a66a0f404157b60",
+    "VALIDATION.md": "2fcff64f642d3b1aa0d70ca65d40be6f1d283a2c765272d789bda780aff712dc",
+    ".gitignore": "735c41d05fdfa60427d047d73f0bbe1aa4ec2ebe219a250de7789e3726ccb99c",
+    ".github/workflows/conformance.yml": "1351889a97562e5d5a30ffe0c5d085a4030e1da8e81ea4964d1c970b7c6762ce",
+    "spec/0001-boundary.md": "77485f7da147b54d14bba91d54e47826b6c3d1a24a7de7f2ffd126fde6cc4f7c",
+    "spec/core.md": "b18a1841b00064c51ca9e63f3972f28024306044b9a80ec2c0d24a3bdcb5d5bc",
+    "spec/plugin.md": "4e0ea43506a3386f8766eeb2ef2cd9a69758451289b0cac9e4c17b6efa405629",
+    "spec/a2a.md": "f229a554e792d7e13b6a4a9f735e753cd78951a6e61429e16c8448f86a9eb9b2",
+    "spec/audit.md": "19d111ae996ad46c67824611e217fa88627e0b859b621e12a58d849436324468",
+    "spec/partner-validation.md": "d071738a8e71712e0decb30cb4ac29cf0c0d89414bc106ad8a7faeeccc546db8",
+    "schemas/discovery.schema.json": "b433dab9e0b65f1fd75e7e1839998a962d7da94bdd9fbf268c9cdb2dc5532626",
+    "schemas/core.schema.json": "d9d95963ab3c86934e772abdae21e8f438d173869d39e957a40aa5ab92acf758",
+    "examples/discovery.json": "45a1bf2409beb18df86b18427fa0008af2c3035bf50b73be5e30a1da4b5812d6",
+    "examples/conversation.md": "2eb9ee552b5af8a05622488eead63fffe349761ce10afed7744e8b0e1021c12c",
+    "reference/server.py": "b79a5e8bf40c8d03d5d649c15ab0ec7dc3d97a05505d85178214142d83c34dbb",
+    "conformance/check.py": "dfbaf0fd873ec153137b6ece910f40112871932dd5bbeabee1787c3fcc015dad",
+    "conformance/test_reference.py": "c9850bfd40e435dcafecfb9b131c5c63932496c8d80025419c46a1040095f749",
+    "conformance/validate_schemas.py": "6ef1f71d257c3e103f7d304f9b02c76ac54f7b6cf7d834abfb89157877dfd7ea",
+    "conformance/requirements.txt": "7d2e49a993538ab4c1a8915f79da9c9407fe37c03aba7f26db8d3fa40364416b"
+  }
+}
