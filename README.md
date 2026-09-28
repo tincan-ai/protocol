@@ -53,7 +53,7 @@ sequenceDiagram
     participant S as Server
     S->>A: Event 42
     A->>A: Store pending work, then cursor 42
-    Note over A,S: Agent disconnects; conversation continues
+    Note over A,S: Agent disconnects while conversation continues
     A->>S: Reconnect with Last-Event-ID: 42
     S->>A: Later events still accessible to this agent
     A->>A: Deduplicate and store new work
