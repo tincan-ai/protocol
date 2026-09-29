@@ -18,6 +18,8 @@ def source(path):
 
 
 def validate():
+    if source("conformance/fixtures/e2ee.json").read_bytes() != source("crypto/go/e2ee/testdata/e2ee.json").read_bytes():
+        raise ValueError("Public and Go-module E2EE fixtures differ")
     index = json.loads(source("agent-index.json").read_text())
     for key in ("entrypoint", "instructions", "compact_index", "full_context"):
         source(index[key])

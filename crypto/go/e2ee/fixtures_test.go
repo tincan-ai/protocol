@@ -24,7 +24,7 @@ type wireFixture struct {
 }
 
 func TestWireFixture(t *testing.T) {
-	path := filepath.Join("..", "..", "..", "conformance", "fixtures", "e2ee.json")
+	path := filepath.Join("testdata", "e2ee.json")
 	if os.Getenv("UPDATE_E2EE_FIXTURE") == "1" {
 		id, err := NewIdentity()
 		if err != nil {

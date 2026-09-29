@@ -30,6 +30,9 @@ The fixed JSON fixture is safe synthetic data. Its payload key is intentionally
 public. Never use any fixture value as a production identity, nonce or key.
 Regenerate intentionally with `UPDATE_E2EE_FIXTURE=1 go -C crypto/go test ./e2ee
 -run TestWireFixture -count=1` from the repository root; review all changed bytes.
+Copy the generated `crypto/go/e2ee/testdata/e2ee.json` to
+`conformance/fixtures/e2ee.json`; the documentation check enforces byte equality.
+Keeping a fixture inside the Go module also supports tests from a module download.
 Regeneration does not need the MLS module because that fixture covers the outer
 binding only. All real MLS tests remain a separate mandatory CI job.
 
