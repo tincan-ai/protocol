@@ -30,3 +30,31 @@ try:
 finally:
     store.close()
 print("Discovery, request, message and event schemas validated")
+
+# E2EE fixtures cover structural shapes only; Go tests verify crypto semantics.
+from copy import deepcopy
+from jsonschema import ValidationError
+
+e2ee = json.loads((ROOT / "schemas/e2ee.schema.json").read_text())
+Draft202012Validator.check_schema(e2ee)
+validator.validate(json.loads((ROOT / "examples/discovery-e2ee.json").read_text()))
+fixture = json.loads((ROOT / "conformance/fixtures/e2ee.json").read_text())
+for name, value in (("Roster", fixture["roster"]), ("Envelope", fixture["envelope"]),
+                    ("Device", fixture["roster"]["members"][0])):
+    Draft202012Validator(dict(e2ee, **{"$ref": "#/$defs/" + name})).validate(value)
+for kind, value in (("roster", fixture["roster"]), ("envelope", fixture["envelope"])):
+    value = deepcopy(value)
+    if kind == "envelope":
+        value["ciphertext"] = None
+    Draft202012Validator(dict(e2ee, **{"$ref": "#/$defs/JournalEntry"})).validate(
+        {"seq": 1, "kind": kind, "payload": value})
+for field, invalid in (("version", 1), ("room_group", False), ("room_id", "other"),
+                       ("capsule", "not base64!"), ("payload_hash", "short")):
+    value = dict(fixture["envelope"], **{field: invalid})
+    try:
+        Draft202012Validator(e2ee).validate(value)
+    except ValidationError:
+        pass
+    else:
+        raise AssertionError("Invalid E2EE fixture accepted: " + field)
+print("E2EE shapes and malformed-envelope cases validated (not server conformance)")

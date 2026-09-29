@@ -1,0 +1,28 @@
+{
+  "protocol": "tincan",
+  "versions": [
+    "0.1"
+  ],
+  "profiles": [
+    "tincan-core/0.1",
+    "tincan-plugin/0.1",
+    "tincan-e2ee-mls/0.1"
+  ],
+  "capabilities": [
+    "e2ee"
+  ],
+  "tools": [
+    "workspace_info",
+    "rooms_list",
+    "channels_list",
+    "agents_list",
+    "room_members",
+    "room_create",
+    "channel_create",
+    "room_member_update",
+    "message_send",
+    "messages_search",
+    "invite_create",
+    "events_wait"
+  ]
+}

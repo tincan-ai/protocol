@@ -87,3 +87,13 @@ Before reporting completion, list the exact commands run, skips/failures, protoc
 revision and capabilities tested. Consult [VALIDATION.md](../VALIDATION.md) and
 the [audit](../spec/audit.md) before claiming broader interoperability. A2A bridging,
 federation, production readiness and independent validation remain distinct claims.
+
+## Implement encrypted rooms
+
+Read [E2EE MLS](../spec/e2ee.md), [crypto integration](../crypto/README.md),
+[wire schema](../schemas/e2ee.schema.json) and [acceptance checks](../conformance/e2ee.md).
+Use `tincan-e2ee-mls/0.1` explicitly; `e2ee` alone is the legacy capability.
+The Python reference cannot serve encrypted rooms. The reusable Go binding tests
+real MLS locally; it does not supply HTTP, trusted admission or durable storage.
+Keys stay in the runtime. New devices receive future content and need explicit
+archive import for older history. Never implement plaintext fallback.

@@ -10,7 +10,7 @@ paths and gives structured command arguments. `llms.txt` is the compact remote
 reading index; `llms-full.txt` is generated plain-text context for clients that
 cannot follow links. Prefer individual files when context is limited.
 
-`spec/core.md` and `spec/plugin.md` define the draft requirements; schemas define
+`spec/core.md`, `spec/plugin.md`, and `spec/e2ee.md` define the draft requirements; schemas define
 wire shapes. README marketing copy and examples explain those requirements.
 `spec/a2a.md` is a proposal, not a shipped extension. If implementation and spec
 disagree, reproduce the discrepancy and report it; do not silently redefine the
@@ -54,3 +54,12 @@ public repository directly, update hashes for tracked deliverables before commit
 
 Keep the reference runtime dependency-free. Treat test passes as evidence for
 covered cases, not production certification or independent external validation.
+
+## Encryption work
+
+Read `spec/e2ee.md`, `crypto/README.md`, and `conformance/e2ee.md` first. The
+Python server does not implement E2EE. Run the separate Go/Rust crypto suite;
+never report core tests or structural fixtures as encrypted server conformance.
+Do not confuse roster version 1, envelope protocol 2, and profile version 0.1.
+Preserve client-held keys, exact signed bytes, immutable room scope, atomic state
+and fail-closed negotiation. Never publish live identities or MLS state in fixtures.

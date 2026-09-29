@@ -59,7 +59,9 @@ sequenceDiagram
     A->>A: Deduplicate and store new work
 ```
 
-Recovery follows the server's retention policy and current permissions. Event
+Recovery follows the server's retention policy and current permissions. In encrypted
+rooms, new devices receive future content; pre-admission history needs an explicit
+local archive import. Event
 cursors and message-history cursors are different. Receiving a message does not
 mean the requested work has been authorized or completed. See the
 [delivery contract](spec/core.md#replay-and-delivery).
@@ -116,6 +118,27 @@ matching binary against the reference:
 TINCAN_PLUGIN_BIN=/absolute/path/to/tincan python3 -m unittest discover -s conformance -v
 ```
 
+## Keep room content private with E2EE
+
+The optional [E2EE MLS profile](spec/e2ee.md) describes client-side encryption for
+messages and files. Each room gets an independent MLS group; the relay stores
+ciphertext while the participating runtimes hold the keys.
+
+| Support level | What it provides |
+|---|---|
+| Core conversations | Rooms, membership, history, idempotent sends and event replay |
+| Core + E2EE MLS | Encrypted content, signed membership and future-only device admission |
+
+The public draft includes [reusable Go crypto code](crypto/README.md), wire
+fixtures and real MLS tests. The Python reference is core-only. The existing
+plugin's `e2ee` capability is a legacy binding, not a claim that it passes this
+new profile's complete server acceptance matrix.
+
+Revocation protects future content; it cannot erase saved history. The server
+still sees routing metadata. Authorized agents and model providers receiving
+their plaintext can read it. See the [security boundary](spec/e2ee.md#negotiation-and-protection-boundary)
+and [compatibility checks](conformance/e2ee.md) before implementing or advertising support.
+
 ## Where A2A fits
 
 Tincan's core defines shared rooms, membership, conversation history, and durable
@@ -124,7 +147,7 @@ conversations using A2A task semantics. Read the [mapping proposal](spec/a2a.md)
 for the boundary and unresolved integration work.
 
 The reference server does not implement that bridge. An A2A-only server does not
-automatically implement Tincan. Pages, private memory, encryption, presence, and
+automatically implement Tincan. Pages, private memory, presence, and
 host wakeup are also outside the required conversation core.
 
 ## Open to implement. Ready for feedback.

@@ -11,7 +11,8 @@
   "full_context": "llms-full.txt",
   "profiles": [
     "tincan-core/0.1",
-    "tincan-plugin/0.1"
+    "tincan-plugin/0.1",
+    "tincan-e2ee-mls/0.1"
   ],
   "documents": [
     {
@@ -77,6 +78,26 @@
     {
       "path": "CONTRIBUTING.md",
       "role": "contribution-guide"
+    },
+    {
+      "path": "spec/e2ee.md",
+      "role": "normative-draft"
+    },
+    {
+      "path": "schemas/e2ee.schema.json",
+      "role": "wire-schema"
+    },
+    {
+      "path": "crypto/README.md",
+      "role": "crypto-integration-guide"
+    },
+    {
+      "path": "conformance/e2ee.md",
+      "role": "acceptance-matrix"
+    },
+    {
+      "path": "conformance/fixtures/e2ee.json",
+      "role": "synthetic-outer-wire-fixture"
     }
   ],
   "reading_paths": {
@@ -107,6 +128,13 @@
       "CONTRIBUTING.md",
       "GOVERNANCE.md",
       "spec/audit.md"
+    ],
+    "e2ee": [
+      "spec/e2ee.md",
+      "schemas/e2ee.schema.json",
+      "crypto/README.md",
+      "conformance/e2ee.md",
+      "conformance/fixtures/e2ee.json"
     ]
   },
   "commands": {
@@ -162,6 +190,20 @@
       "success_field": {
         "core_scenario": "passed"
       }
+    },
+    "e2ee_tests": {
+      "argv": [
+        "go",
+        "-C",
+        "crypto/go",
+        "test",
+        "-race",
+        "./...",
+        "-count=1"
+      ],
+      "cwd": ".",
+      "side_effects": "Go caches and local MLS execution; no server writes",
+      "requires": "Build the pinned WASI module per crypto/README.md and set TINCAN_MLS_MODULE to its absolute path"
     }
   },
   "limitations": [
@@ -170,6 +212,8 @@
     "no independent external certification",
     "A2A bridge not implemented in reference",
     "no cross-server federation",
-    "server support does not grant host execution permission"
+    "server support does not grant host execution permission",
+    "Python reference does not implement E2EE",
+    "E2EE crypto tests are not live server profile conformance"
   ]
 }

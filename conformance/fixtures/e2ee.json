@@ -1,0 +1,49 @@
+{
+  "description": "Synthetic outer-envelope encoding/signature/AEAD vector. Capsule and KeyPackage are inert structural placeholders, NOT valid MLS messages. The payload key is public test data; never use it for real content.",
+  "root": "LFPLxGv6Wm4914UFKZnTQJxZ9hIKPrMkDaIIRXVem4A=",
+  "roster": {
+    "room_id": "rm_mls_00000000000000000000000000000001",
+    "version": 1,
+    "workspace_id": "ws_fixture",
+    "epoch": 1,
+    "previous": "",
+    "members": [
+      {
+        "agent_id": "ag_fixture",
+        "recipient": "age10wcqw37k005lklct90agzt2wapf323dqyz94dkrdpq39ksnpkpks78s84e",
+        "signing_key": "LFPLxGv6Wm4914UFKZnTQJxZ9hIKPrMkDaIIRXVem4A=",
+        "protocol": 2,
+        "key_package": "AQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQ=="
+      }
+    ],
+    "signature": "jqErOdGrjK4nokFnoj4Y9zDtC2MspBgPUod08uOd/3jJ3m0ugvgS8tFi3yVJZoPIdZoNiIy63nPu7jo+SnVlDQ==",
+    "protocol": 2
+  },
+  "envelope": {
+    "room_group": true,
+    "room_id": "rm_mls_00000000000000000000000000000001",
+    "kind": "message",
+    "version": 2,
+    "workspace_id": "ws_fixture",
+    "channel_id": "ch_room_rm_mls_00000000000000000000000000000001_fixture",
+    "sender_id": "ag_fixture",
+    "key": "fixture-\u003c\u003e\u0026\u2028",
+    "mentions": [],
+    "reply_to": null,
+    "attachment_ids": null,
+    "epoch": 1,
+    "roster_hash": "3a190800477988a4fc1e862d27dd92fcfdb2c6ffe12ea8446c7d30a7ef5d6326",
+    "ciphertext": "niRrlSK8uYr8qCQwePbKi+dtILgckmxbwS9Y+bTE528bgpnuGrCXWldeB8c6wsKN3Ay9LVB3g+76Xs0QsOpwd9uj4CQ7euZGZd2hlOZUVMnnFdAJ8Qnh",
+    "signature": "s5umOqZuUi++EU9T9hwfygDo+GooAzkxqNHn73lNOGFVihiWB8KZRTnfP176p7a+dt5jH/7s++QOSXjfBZYjAw==",
+    "capsule": "AgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgI=",
+    "payload_hash": "5acb4c9d25cfd4883034670c493dc11be7ec51f585070064cd0f602e72d88d15"
+  },
+  "roster_signing_input": "tincan-roster-v1\u0000{\"room_id\":\"rm_mls_00000000000000000000000000000001\",\"version\":1,\"workspace_id\":\"ws_fixture\",\"epoch\":1,\"previous\":\"\",\"members\":[{\"agent_id\":\"ag_fixture\",\"recipient\":\"age10wcqw37k005lklct90agzt2wapf323dqyz94dkrdpq39ksnpkpks78s84e\",\"signing_key\":\"LFPLxGv6Wm4914UFKZnTQJxZ9hIKPrMkDaIIRXVem4A=\",\"protocol\":2,\"key_package\":\"AQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQ==\"}],\"signature\":null,\"protocol\":2}",
+  "envelope_signing_input": "tincan-message-v2\u0000{\"room_group\":true,\"room_id\":\"rm_mls_00000000000000000000000000000001\",\"kind\":\"message\",\"version\":2,\"workspace_id\":\"ws_fixture\",\"channel_id\":\"ch_room_rm_mls_00000000000000000000000000000001_fixture\",\"sender_id\":\"ag_fixture\",\"key\":\"fixture-\\u003c\\u003e\\u0026\\u2028\",\"mentions\":[],\"reply_to\":null,\"attachment_ids\":null,\"epoch\":1,\"roster_hash\":\"3a190800477988a4fc1e862d27dd92fcfdb2c6ffe12ea8446c7d30a7ef5d6326\",\"ciphertext\":null,\"signature\":null,\"capsule\":\"AgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgI=\",\"payload_hash\":\"5acb4c9d25cfd4883034670c493dc11be7ec51f585070064cd0f602e72d88d15\"}",
+  "mls_aad": "{\"room_group\":true,\"room_id\":\"rm_mls_00000000000000000000000000000001\",\"kind\":\"message\",\"version\":2,\"workspace_id\":\"ws_fixture\",\"channel_id\":\"ch_room_rm_mls_00000000000000000000000000000001_fixture\",\"sender_id\":\"ag_fixture\",\"key\":\"fixture-\\u003c\\u003e\\u0026\\u2028\",\"mentions\":[],\"reply_to\":null,\"attachment_ids\":null,\"epoch\":1,\"roster_hash\":\"3a190800477988a4fc1e862d27dd92fcfdb2c6ffe12ea8446c7d30a7ef5d6326\",\"ciphertext\":null,\"signature\":null,\"payload_hash\":\"5acb4c9d25cfd4883034670c493dc11be7ec51f585070064cd0f602e72d88d15\"}",
+  "roster_hash": "3a190800477988a4fc1e862d27dd92fcfdb2c6ffe12ea8446c7d30a7ef5d6326",
+  "device_fingerprint": "03b5f91cca2c4708cc9ea2d2da1da2c1168fb93e46ba6e26855ed119fff487db",
+  "message_id": "msg_1f919ce6c24e314ecfcf0f6c0346aae1",
+  "synthetic_payload_key": "AwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwM=",
+  "plaintext": "{\"text\":\"synthetic fixture\",\"metadata\":{},\"attachments\":[]}"
+}

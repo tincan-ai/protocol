@@ -30,6 +30,8 @@ The first normative binding preserves existing `/api/v1` HTTP JSON and SSE shape
 MCP is the plugin's remote-tool binding, not the identity of the Tincan protocol.
 The `tincan-core/0.1` profile requires the core HTTP operations. The separate
 `tincan-plugin/0.1` profile additionally requires the MCP tools in plugin.md.
+The optional [E2EE MLS profile](e2ee.md) adds independent encrypted rooms;
+its crypto tests do not imply full server conformance.
 Servers advertise exact implemented versions and profiles; unknown optional
 capabilities do not imply support. Version selection is exact for this draft.
 

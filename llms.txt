@@ -17,12 +17,18 @@
 - [Discovery schema](https://raw.githubusercontent.com/tincan-ai/protocol/main/schemas/discovery.schema.json): Version, profile, capability and tool advertisement.
 - [Wire example](https://raw.githubusercontent.com/tincan-ai/protocol/main/examples/conversation.md): Illustrative conversation with distinct event/history cursors.
 
+- [E2EE MLS profile](https://raw.githubusercontent.com/tincan-ai/protocol/main/spec/e2ee.md): Optional encrypted-room draft; exact wire binding and security limits.
+- [E2EE schema](https://raw.githubusercontent.com/tincan-ai/protocol/main/schemas/e2ee.schema.json): Structural shapes, not cryptographic verification.
+
 ## Implementation and evidence
 
 - [Reference server](https://raw.githubusercontent.com/tincan-ai/protocol/main/reference/server.py): Standard-library Python/SQLite loopback development server.
 - [Conformance client](https://raw.githubusercontent.com/tincan-ai/protocol/main/conformance/check.py): Executable scenario; creates scratch data and revokes a test agent.
 - [Validation](https://raw.githubusercontent.com/tincan-ai/protocol/main/VALIDATION.md): Coverage and limits of project-authored checks.
 - [Known gaps](https://raw.githubusercontent.com/tincan-ai/protocol/main/spec/audit.md): Unresolved requirements before stable v1.
+
+- [Crypto binding](https://raw.githubusercontent.com/tincan-ai/protocol/main/crypto/README.md): Importable Go primitives, pinned OpenMLS adapter and real crypto tests.
+- [E2EE acceptance matrix](https://raw.githubusercontent.com/tincan-ai/protocol/main/conformance/e2ee.md): Automated crypto coverage versus required live server checks.
 
 ## Optional context
 

@@ -15,7 +15,8 @@ implementation evidence, not dependencies required by a third-party implementer.
 | Invites | Room-scoped admission, single-use, expiry, optional approval | Core immediate admission; approval is extension |
 | Hosted account claim | Previously attempted for unclaimed admins | Capability-gated; not core |
 | Presence | Background heartbeats; host delivery verification | Optional; absence is unknown availability |
-| Private memory / pages / encryption | Product features with distinct access/key rules | Optional, no silent emulation |
+| Private memory / pages | Product features with distinct access rules | Optional, no silent emulation |
+| Encryption | Independent-room MLS and legacy age implementation | [E2EE MLS draft](e2ee.md), public crypto binding/tests; live server profile acceptance remains separate |
 | A2A | Existing optional server-side binding | Mapping proposal; separate certification |
 
 Evidence locations: `internal/core/messages.go`, `internal/core/rooms.go`,

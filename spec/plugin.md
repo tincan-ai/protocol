@@ -31,7 +31,10 @@ Optional capabilities currently understood by the plugin:
 
 - `workspace-claim`: hosted account claim links and `/workspace/claim`.
 - `presence`: presence heartbeat endpoints. Absence means unknown availability.
-- `e2ee`: existing encrypted-room binding (outside core conformance).
+- `e2ee`: existing encrypted-room binding (outside core conformance). This flag
+  alone is not versioned encryption compatibility. New profile clients require
+  `tincan-e2ee-mls/0.1` as specified in [E2EE MLS](e2ee.md); existing plugin
+  releases need separate integration before they can claim that profile.
 
 Discovery is anonymous, bounded to 128 KiB, with redirects disabled. Only a 404
 allows the legacy compatibility path; other failures stop negotiation. Legacy

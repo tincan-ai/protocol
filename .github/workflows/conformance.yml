@@ -12,3 +12,21 @@ jobs:
       - run: python scripts/build-agent-docs.py --check
       - run: python -m pip install -r conformance/requirements.txt
       - run: python conformance/validate_schemas.py
+      - run: python conformance/verify_e2ee_fixture.py
+  e2ee-crypto:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v5
+        with:
+          go-version: '1.25.x'
+          cache-dependency-path: crypto/go/go.sum
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: rustup toolchain install 1.92.0 --profile minimal --target wasm32-wasip1
+      - run: rustup override set 1.92.0
+      - run: python scripts/build-mls.py
+      - run: go -C crypto/go test -race ./... -count=1
+        env:
+          TINCAN_MLS_MODULE: ${{ github.workspace }}/.tools/mls/wasm32-wasip1/release/tincan-mls.wasm

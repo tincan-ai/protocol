@@ -7,7 +7,7 @@ import re
 from urllib.parse import unquote, urlsplit
 
 ROOT = Path(__file__).resolve().parents[1]
-SOURCES = ("docs/agents.md", "spec/0001-boundary.md", "spec/core.md", "spec/plugin.md", "spec/a2a.md", "spec/audit.md", "VALIDATION.md", "schemas/discovery.schema.json", "schemas/core.schema.json")
+SOURCES = ("docs/agents.md", "spec/0001-boundary.md", "spec/core.md", "spec/plugin.md", "spec/e2ee.md", "crypto/README.md", "conformance/e2ee.md", "spec/a2a.md", "spec/audit.md", "VALIDATION.md", "schemas/discovery.schema.json", "schemas/core.schema.json", "schemas/e2ee.schema.json")
 
 
 def source(path):
@@ -34,7 +34,7 @@ def validate():
         for arg in command["argv"]:
             if arg.endswith(".py"):
                 source(arg)
-    files = list(ROOT.glob("*.md")) + list((ROOT / "docs").glob("*.md")) + list((ROOT / "spec").glob("*.md")) + list((ROOT / "examples").glob("*.md"))
+    files = list(ROOT.rglob("*.md"))
     for file in files:
         body = re.sub(r"```.*?```", "", file.read_text(), flags=re.S)
         for target in re.findall(r"\[[^\]]*\]\(([^\s)]+)\)", body):
